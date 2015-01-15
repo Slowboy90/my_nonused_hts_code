@@ -1,0 +1,2 @@
+class PofController < ApplicationController
+end

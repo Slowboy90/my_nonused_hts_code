@@ -1,0 +1,30 @@
+// Place all the styles related to the photoalbums controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper{
+	padding-top:100px;
+}
+
+.flash{
+	width:90%;
+	height:50px;
+	position:absolute;
+	left:50%;
+	margin-left:-45%;
+	line-height:50px;
+	font-weight:bold;
+	text-align:center;
+	cursor:pointer;
+}
+
+.notice {
+	background-color:LightGreen;
+	border:1px solid green;
+	color:darkgreen;
+}
+
+.alert {
+	background-color:tomato;
+	border:1px solid red;
+	color:darkred;
+}

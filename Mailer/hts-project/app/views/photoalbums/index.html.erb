@@ -1,0 +1,25 @@
+<% provide(:title, "Fotoalbums") %>
+
+<h1>Fotoalbums <small>Overzicht</small></h1>
+<div class="row">
+	<% @photoalbums.each do |photoalbum| %>
+		<% next if (photoalbum.photos.first == nil) && (!admin_signed_in?) %>
+		<div class="col-xs-6 col-md-3">	
+			<div class="thumbnail">		
+				<% if (photoalbum.photos.first == nil) %>
+					<%= link_to (image_tag "no-img.jpg", :style => "max-width:100%;"),  photoalbum_path(photoalbum)%>
+				<% else %>
+					<%= link_to (image_tag photoalbum.photos.first.file_name.thumb, :style => "max-width:100%;"),  photoalbum_path(photoalbum) %>
+				<% end %>
+
+				<div class="caption">
+
+					<small> 
+						<%= photoalbum.name %>
+					</small>
+				</div>
+			</div>
+
+		</div>
+<% end %> 
+</div>

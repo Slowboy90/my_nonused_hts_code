@@ -1,0 +1,3 @@
+# rails generate devise:controllers [scope]
+
+Person.id toevoegen aan model User

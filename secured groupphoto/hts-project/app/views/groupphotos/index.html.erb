@@ -1,0 +1,8 @@
+<% if @groupphotos %>
+	<% @groupphotos.each do |dingen| %>
+		<%= image_tag dingen.file_name %>
+	<% end %>
+<% else %>
+	<p>U bent waarschijnlijk niet op de foto gekomen!</p>
+<% end %>
+

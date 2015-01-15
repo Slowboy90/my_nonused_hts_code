@@ -1,0 +1,18 @@
+<% provide(:title, "Fotoalbum toevoegen") %>
+<% if admin_signed_in? %>
+	<h1>Fotoalbum toevoegen</h1>
+	<%= form_for @photoalbum do |f| %>
+	<div class="form-group">
+		<p>
+			<%= f.label :name, 'Naam fotoalbum:' %>
+			<%= f.text_field :name, class: "form-control" %>
+		</p>
+	</div>
+	<div class="form-group">
+		<p>
+			<%= f.submit 'Verstuur!', class: "btn btn-primary" %>
+			<%= link_to "Terug", root_path, class: "btn btn-default"  %>
+		</p>
+	</div>
+	<% end %>
+<% end %>

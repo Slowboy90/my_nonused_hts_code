@@ -1,0 +1,73 @@
+<% provide(:title, "Nieuwsitems") %>
+
+
+<h1>Nieuwsitems <small>Overzicht</small></h1>
+
+<%= link_to "Nieuw", new_admins_news_path %>
+
+<h2>Nieuws voorafgaand aan de reunie</h2>
+<% @news.each do |news| %>
+	<% next if (news.before == false)  %>
+
+	<h4>Titel</h4>
+	<%= news.title %> <br>
+	<h4>Content</h4>
+	<%= news.content %> <br>
+	<h4>Afbeelding</h4>
+
+	<% if (news.image == nil) %>
+		<%= image_tag "no-img.jpg" %>
+	<% else %>
+		<%= image_tag news.image %>
+	<% end %>
+
+	<br>
+	<h4>Is het nieuws voorafgaand aan de reuinie?</h4>
+	
+	<% if news.before %>
+	waar
+	<% else %>
+	Niet waar
+	<% end %>
+	<p></p>
+
+
+
+	<%= link_to "Bewerken", edit_admins_news_path(news)  %> | 
+	<%= link_to "Verwijderen", admins_news_path(news), method: :delete, data: { :confirm => "Weet u het zeker?" } %>
+<% end %>
+
+
+<h2>Nieuws na afloop van de reunie</h2>
+<% @news.each do |news| %>
+	<% next if (news.before == true)  %>
+
+	<h4>Titel</h4>
+	<%= news.title %> <br>
+	<h4>Content</h4>
+	<%= news.content %> <br>
+	<h4>Afbeelding</h4>
+
+	<% if (news.image?) %>
+		<%= image_tag news.image %>
+	<% else %>
+		<%= image_tag "no-img.jpg" %>
+	<% end %>
+
+	<br>
+	<h4>Is het nieuws voorafgaand aan de reuinie?</h4>
+
+	<% if news.before %>
+	waar
+	<% else %>
+	Niet waar
+	<% end %>
+	<p></p>
+
+
+
+	<%= link_to "Bewerken", edit_admins_news_path(news)  %> | 
+	<%= link_to "Verwijderen", admins_news_path(news), method: :delete, data: { :confirm => "Weet u het zeker?" } %>
+<% end %>
+
+

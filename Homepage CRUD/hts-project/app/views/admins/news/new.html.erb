@@ -1,0 +1,35 @@
+<% provide(:title, "Nieuwsitem toevoegen") %>
+
+	<h1>Nieuwsitem toevoegen</h1>
+	<%= form_for @news, url: admins_news_index_path(@news) do |f| %>
+	<div class="form-group">
+		<p>
+			<%= f.label :title, 'Titel nieuwsitem:' %>
+			<%= f.text_field :title, class: "form-control" %>
+		</p>
+	</div>
+	<div class="form-group">
+		<p>
+			<%= f.label :content, 'Content nieuwsitem:' %>
+			<%= f.text_area :content, class: "form-control" %>
+		</p>
+	</div>
+	<div class="form-group">
+		<p>
+			<%= f.label :image, 'Afbeelding nieuwsitem:' %>
+			<%= f.file_field :image %>
+		</p>
+	</div>
+	<div class="form-group">
+		<p>
+			<%= f.label :before, 'Nieuwsitem voorafgaand aan de reunie?' %>
+			<%= f.check_box :before %>
+		</p>
+	</div>
+	<div class="form-group">
+		<p>
+			<%= f.submit 'Verstuur!', class: "btn btn-primary" %>
+			<%= link_to "Terug", admins_news_index_path, class: "btn btn-default"  %>
+		</p>
+	</div>
+	<% end %>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  	<title><%= full_title(yield(:title)) %></title>
+
+  	<% unless params[:controller] == 'pages' %>
+  		<%= stylesheet_link_tag    'admins/admin', media: 'all', 'data-turbolinks-track' => true %>
+	<% else %>
+		<%= stylesheet_link_tag    'pages', media: 'all', 'data-turbolinks-track' => true %>
+	<% end %>
+	
+
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <% if params[:controller] == 'pof' %>
+      <%= stylesheet_link_tag    'pof', media: 'all', 'data-turbolinks-track' => true %>
+      <%= javascript_include_tag 'pof', 'data-turbolinks-track' => true %>
+    <% end %>
+  	<%= csrf_meta_tags %>
+</head>
+	<body>
+		<% flash.each do |key, value| %>
+			<%= content_tag :div, value, class: "flash #{key}" %>
+		<% end %>
+		<div class="page-header">
+			<div class="container">
+				<h1><%= link_to "100 Jaar HTS", admins_root_path %> <small>Adminpanel</small></h1>
+				<% if admin_signed_in? %>
+					<ul class="nav nav-pills">
+						<%= content_tag :li, (link_to "Home", admins_root_path), class: is_active?(admins_root_path) %>
+
+						<li role="presentation" class="dropdown">
+						    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+						      Fotoalbums <span class="caret"></span>
+						    </a>
+						    <ul class="dropdown-menu" role="menu">
+							<%= content_tag :li, (link_to "Fotoalbum toevoegen", new_admins_photoalbum_path) %>
+
+							<%= content_tag :li, (link_to "Fotoalbum bewerken", admins_photoalbums_path) %>
+							</ul>
+						</li>
+
+						<li role="presentation" class="dropdown">
+						    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+						      Homepage Before <span class="caret"></span>
+						    </a>
+						    <ul class="dropdown-menu" role="menu">
+							<%= content_tag :li, (link_to "Fotoalbum toevoegen", new_admins_photoalbum_path) %>
+
+							<%= content_tag :li, (link_to "Fotoalbum bewerken", admins_photoalbums_path) %>
+							</ul>
+						</li>
+
+						<li role="presentation" class="dropdown">
+						    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-expanded="false">
+						      Homepage After <span class="caret"></span>
+						    </a>
+						    <ul class="dropdown-menu" role="menu">
+							<%= content_tag :li, (link_to "Fotoalbum toevoegen", new_admins_photoalbum_path) %>
+
+							<%= content_tag :li, (link_to "Fotoalbum bewerken", admins_photoalbums_path) %>
+							</ul>
+						</li>
+
+						<%= content_tag :li, (link_to "Uitloggen", destroy_admin_session_path, method: :delete), class: is_active?(destroy_admin_session_path) %>
+					</ul>
+				<% end %>
+
+			</div>
+		</div>
+		
+		
+		<div class="container">
+		    <%= yield %>
+		</div>
+
+		<footer class="footer">
+	      <div class="container">
+	        <p class="text-muted">&copy; 100 Jaar HTS <%= Time.now.year %>. Deze website is ontwikkeld door CMD studenten van de NHL Hogeschool Leeuwarden.</p>
+	      </div>
+	    </footer>
+    </body>
+</html>
+

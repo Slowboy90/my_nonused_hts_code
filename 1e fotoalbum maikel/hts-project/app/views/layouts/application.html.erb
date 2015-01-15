@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %> | </title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<% if notice %>
+		<p class="alert-success flash"><%= notice %></p>
+	<% end %>
+	<% if alert %>
+    	<p class="alert-danger flash"><%= alert %></p>
+    <% end %>
+	<div class="page-header">
+		<div class="container">
+  			<h1><%= link_to "100 Jaar HTS", root_path %> <small>fotoalbum</small></h1>
+  			<% if admin_signed_in? %>
+			<ul class="nav nav-pills">
+			 	<%= content_tag :li, (link_to "Home", root_path), class: current_link_to(root_path) %>
+			 	<%= content_tag :li, (link_to "Fotoalbum toevoegen", new_photoalbum_path), class: current_link_to(new_photoalbum_path) %>
+			 	<%= content_tag :li, (link_to "Uitloggen", destroy_admin_session_path, method: :delete, data: { confirm: 'weet u het zeker?'}), class: current_link_to(destroy_admin_session_path) %>
+			 <% end %>
+			</ul>
+  		</div>
+	</div>
+
+
+<div class="container">
+	<%= yield %>
+</div>
+
+
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">&copy; Maikel Traksel</p>
+      </div>
+    </footer>
+
+</body>
+</html>

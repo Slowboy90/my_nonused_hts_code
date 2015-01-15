@@ -1,0 +1,46 @@
+<% provide(:title, "#{@newphoto.name}") %>
+
+<h1><%= @newphoto.name %></h1>
+
+<%= will_paginate @photoalbum, :previous_label => t('<'), :next_label => t('>'), class: "paginate-center" %>
+
+<% @photoalbum.each do |photo| %>
+    <div class="col-xs-6 col-md-2"> 
+      <div class="thumbnail"> 
+      	<%= lightbox_img_helper(photo) %>
+
+        <div class="caption">
+        	<%= link_to "Download Origineel", photo.file_name.url %>
+          
+          <% if admin_signed_in? %>
+             <br>
+        	   <%= link_to "Verwijderen", [photo.photoalbum, photo], method: :delete, data: { :confirm => "Weet u zeker dat u deze foto wilt verwijderen?" } %>
+          <% end %>
+        </div>
+      </div>
+
+   	</div>
+<% end %>
+<div class="clearfix"></div>
+
+<%= will_paginate @photoalbum, :previous_label => t('<'), :next_label => t('>'), class: "paginate-center" %>
+
+
+<% if admin_signed_in? %>
+  <h2>Foto toevoegen:</h2>
+
+  <% #First the form passes the variable for the photoalbum used, then the new picture being built, selected in the file_field %>
+  <%= form_for([@newphoto, @newphoto.photos.build]) do |f|  %> 
+    <p>
+      <%= f.file_field :file_name %>
+    </p>
+    
+    <p>
+      <%= f.submit "Uploaden", class: "btn btn-primary" %>
+    </p>
+  <% end %>
+<% end %>
+
+<p>
+  <%= link_to "Terug", photoalbums_path, class: "btn btn-success" %>
+</p>

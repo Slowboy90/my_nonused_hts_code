@@ -1,0 +1,36 @@
+<% provide(:title, "Index") %>
+
+<div class="row">
+	<% @photoalbums.each do |photoalbum| %>
+		<% next if photoalbum.photos.first == nil && !admin_signed_in? %>
+		<div class="col-sm-6 col-md-4">
+	    	<div class="thumbnail">
+	    		<% if photoalbum.photos.first == nil %> 
+	    			<%= link_to (image_tag "no-image.png", :style => "width:100%;, height:200px;"), photoalbum_path(photoalbum) %> 
+
+	    		<% else %>
+					<%= link_to (image_tag photoalbum.photos.first.file_name.thumb, :style => "width:100%"), photoalbum_path(photoalbum) %>
+				<% end %>
+		      	<div class="caption">
+					<h3>
+						<%= photoalbum.name %>
+					</h3>
+					<%= link_to 'Bekijk album', photoalbum_path(photoalbum), class: "btn btn-primary" %> 
+					<% if admin_signed_in? %>
+						<%= link_to 'Bewerk', edit_photoalbum_path(photoalbum), class: "btn btn-warning" %>
+						<%= link_to 'Verwijder', photoalbum_path(photoalbum), class: "btn btn-danger",
+									method: :delete, data: { confirm: 'Weet u het zeker?'} %>
+					<% end %>			
+				</div>
+		    </div>
+	  	</div>
+	<% end %>
+</div>
+		
+<% if admin_signed_in? %>
+	<%= link_to 'Nieuw album', new_photoalbum_path, class: "btn btn-default" %>
+	<%= link_to 'Log uit', destroy_admin_session_path, class: "btn btn-default",
+		method: :delete, data: { confirm: 'Weer u het zeker dat u wilt uitloggen?'} %>
+<% else %>
+	<%= link_to 'Log in', new_admin_session_path, class: "btn btn-info" %>
+<% end %>

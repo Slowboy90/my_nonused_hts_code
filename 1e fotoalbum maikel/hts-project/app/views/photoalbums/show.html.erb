@@ -1,0 +1,34 @@
+<% provide(:title, "#{@photoalbum.name}") %>
+<h1><%= @photoalbum.name %></h1>
+
+<h2>Foto's</h2>
+	
+<div class="row">
+	<% @photoalbum.photos.each do |photo| %>
+		<div class="col-xs-6 col-md-2">
+	    	<div class="thumbnail">
+		<%= lightbox_img_helper(photo) %>
+			<% if admin_signed_in? %>
+				<%= link_to 'Foto verwijderen', [photo.photoalbum, photo], class: "btn btn-danger center-block top4", method: :delete, data: { confirm: 'Weet u het zeker dat u deze foto wilt verwijderen?'} %>
+			<% end %>
+			</div>
+		</div>
+	<% end %> 
+</div>
+
+
+		<%= link_to 'Pagina terug', photoalbums_path, class: "btn btn-primary" %>
+
+	<% if admin_signed_in? %>
+		<h2>Voeg een foto toe</h2>
+		<%= form_for([@photoalbum, @photoalbum.photos.build]) do |f| 	%>
+			<div class='form-group'>
+				<%= f.file_field :file_name %>
+			</div>
+			<div class='form-group'>
+				<%= f.submit "Voeg toe", class: 'btn btn-primary' %>
+			</div>
+		<% end %>
+	<% end %>
+
+

@@ -1,0 +1,30 @@
+<% provide(:title, "Fotoalbums") %>
+
+<h1>Fotoalbums <small>Overzicht</small></h1>
+<div class="row">
+	<% @photoalbums.each do |photoalbum| %>
+		<% next if (photoalbum.photos.first == nil) && (!admin_signed_in?) %>
+		<div class="col-xs-6 col-md-3">	
+			<div class="thumbnail">		
+				<% if (photoalbum.photos.first == nil) %>
+					<%= link_to (image_tag "no-img.jpg", :style => "width:100%;"),  admins_photoalbum_path(photoalbum)%>
+				<% else %>
+					<%= link_to (image_tag photoalbum.photos.first.file_name.thumb, :style => "width:100%;"),  admins_photoalbum_path(photoalbum) %>
+				<% end %>
+
+				<div class="caption">
+
+					<small> 
+						<%= photoalbum.name %> <br>
+
+						<% if admin_signed_in? %>
+							<%= link_to "Bewerken", edit_admins_photoalbum_path(photoalbum)  %> | 
+							<%= link_to "Verwijderen", admins_photoalbum_path(photoalbum), method: :delete, data: { :confirm => "Weet u het zeker?" } %>
+						<% end %>
+					</small>
+				</div>
+			</div>
+
+		</div>
+<% end %> 
+</div>

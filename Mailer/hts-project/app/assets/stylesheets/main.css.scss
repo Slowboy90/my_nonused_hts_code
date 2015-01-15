@@ -1,0 +1,491 @@
+
+@import "font-awesome";
+
+// colors
+$gray: #333;
+$blue: #003399;
+
+//Screen resolutions
+$xl: 1824px;
+$de: 1224px;
+$tal: 1024px;
+$tap: 640px;
+$mo: 320px;
+
+///////////////
+// reset css //
+///////////////
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+input{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
+///////////////
+// end reset //
+///////////////
+
+
+* {
+  box-sizing: border-box; 
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  line-height: 1; 
+  font-family: 'avenir-medium', arial;
+}
+p{
+  margin-top:5px;
+  margin-bottom: 15px;
+}
+b{
+  font-family: "avenir-heavy";
+}
+p.lead{
+  text-align: center;
+  font-size: 14pt;
+}
+////////////
+// header //
+////////////
+h1{
+  text-align: center;
+  margin-top:50px;
+  margin-bottom:10px;
+  font-family: 'avenir-heavy';
+  font-size:17pt;
+  color:#999999;
+}
+h2{
+  text-align: center;
+  margin-top:60px;
+  margin-bottom:40px;
+  font-family: 'avenir-heavy';
+  font-size:17pt;
+  color:$gray;
+}
+h2 small{
+  color: #999;
+  font-size:12pt;
+}
+h3{
+  font-size: 18pt;
+  color:$gray;
+  margin:12px 0px;
+}
+h3.center{
+  text-align: center;
+}
+h2.white, h3.white{
+  color: #fff;
+}
+h4{
+  font-size: 14pt;
+  font-family: "avenir-heavy";
+  padding:20px 0px;
+}
+
+/////////////////
+// navigations //
+/////////////////
+nav.header{
+  background-color: $gray;
+  text-align: center;
+}
+nav.header .menu-item{
+  display: inline-block;
+  font-family: 'avenir-roman'; 
+}
+nav.header .menu-item a{
+  color:#fff;
+  text-decoration: none;
+}
+nav.header.header-fixed{
+  top:0px;
+  left:0px;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+}
+
+
+/////////////////
+// page header //
+/////////////////
+.container.page-header{
+  font-weight: bold;
+  background-image: url("nhl.png");
+  text-shadow: 0px 2px 4px rgba(0,0,0,0.5);  
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+  padding-top:5%;
+  color:#fff; 
+}
+.container.page-header #countdown span{
+  -webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
+  display: inline-block;
+  background-color: #fff;
+  color: $gray;
+  border-radius: 50%;
+}
+
+///////////
+// icons //
+///////////
+#icons .icon{
+  padding:20px;
+  margin: 60px 0px;
+  text-align: center;
+}
+#icons .icon img{
+  width: 60%;
+}
+
+.container {
+  position: relative;
+  padding: 0% 2%; 
+}
+.container.container-gray{
+  background-color: #f1f1f1;
+}
+
+
+//////////////
+// speakers //
+//////////////
+.speaker-background{
+  background-image: url("3.jpg");
+  background-size: 100%;
+  background-position: center;
+}
+.container.container-speaker{
+  padding:90px 50px;
+  color:#fff;
+}
+.container.container-speaker .content-photo-text{
+  padding: 0px 10px;
+}
+.container.container-speaker .content-photo-image{
+  text-align: center;
+}
+.container.container-speaker .content-photo-image img{
+  width: 70%;
+}
+.speaker-background:nth-child(even) .container-speaker{
+  background-color: rgba(102,102,102,0.85);
+}
+.speaker-background:nth-child(odd) .container-speaker{
+  background-color: rgba(0,51,153,0.85);
+}
+//////////////
+// schedule //
+//////////////
+.schedule-box{
+  border-top: 5px solid $gray;
+}
+.schedule-box .schedule-time{
+  padding-top:20px;
+}
+.schedule-box:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.schedule-box .schedule-icon{
+  color: $blue;
+}
+//////////////
+// location //
+//////////////
+.location-background{
+  background-image: url("location-bg.png");
+  background-size: cover;
+}
+.container.container-location{
+  background-color: rgba(0,0,0,0.55);
+  color:#fff;
+  text-align: center;
+}
+.container.container-location .location-icon{
+  margin:auto;
+  border-radius: 50%;
+  background-color: $blue;
+  width: 100px;
+  height: 100px;
+}
+// fix the height issue on float left //
+.container:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.btn{
+  font-size:15pt;
+  font-weight: bold;
+  padding:10px 15px;
+  border:0px;
+  background-color: $blue;
+  border-radius: 7px;
+  color:#fff;
+  text-decoration: none;
+}
+
+.coll {
+  padding:5px;
+  margin: 0px;
+  float: left;
+  width: 100%; 
+}
+
+.read-more-link{
+  margin: auto;
+  position: absolute;
+  bottom: 10px;
+  left:50%;
+  margin-left: -100px;
+  width: 200px;
+}
+.iframe-map{
+  width: 100%;
+  height: 400px;
+}
+.coll-chart{
+  margin: 10px 0px;
+}
+.coll.mo-show, .coll.tap-show, .coll.tal-show, .coll.de-show, .coll.xl-show {
+  display:none;
+}
+
+@media only screen and (min-width: $mo) {
+  @for $i from 1 through 12 {
+    .mo-#{$i}{
+      width: 100%/12*$i;
+    }
+  }
+  .coll.mo-show {
+    display: block; } 
+  
+  ////////////////
+  // navigation //
+  ////////////////
+  .header-container{
+    height: 80px;
+  }
+  nav.header{
+    height: 80px;
+  }
+  nav.header .menu-item{
+    //display: block;
+    padding:12px;    
+  }
+
+  //////////////
+  // schedule //
+  //////////////
+  .schedule-box{
+    padding:10px 20px;
+  }
+
+  ////////////////
+  // page header//
+  ////////////////
+  .container.page-header{
+    min-height: 270px;
+  }
+  .container.page-header #countdown{
+    font-size: 25pt; 
+    padding-left: 30px; 
+  }
+  .container.page-header #countdown span{
+    padding-top:20px;
+    padding-bottom:15px;
+    padding-left:10px;
+    padding-right:10px;
+    line-height: 0.8;
+  }
+  .container.page-header .page-header-title{
+    font-size:17pt;
+    margin:10px 0px;
+  }
+  .container.page-header .page-header-title small{
+    font-size:15pt;
+  }
+}
+
+@media only screen and (min-width: $tap) {
+  @for $i from 1 through 12 {
+    .tap-#{$i}{
+      width: 100%/12*$i;
+    }
+  }
+  .coll.tap-show{
+    display: block;
+  }
+  ////////////////
+  // navigation //
+  ////////////////
+  .header-container{
+    height: 60px;
+  }
+  nav.header{
+    height: 60px;
+    padding:0% 0%;
+  }
+  nav.header .menu-item{
+    padding:22px 15px;    
+  }
+
+  .coll.tap-show {
+    display: block; } 
+
+  ////////////////
+  // page header//
+  ////////////////
+  .container.page-header{
+    min-height: 370px;
+  }
+  .container.page-header #countdown{
+    font-size: 43pt; 
+    padding-left: 60px; 
+  }
+  .container.page-header #countdown span{
+    padding-top:40px;
+    padding-bottom:30px;
+    padding-left:20px;
+    padding-right:20px;
+    line-height: 0.8;
+    font-size: 53pt;
+  }
+  .container.page-header .page-header-title{
+    font-size:23pt;
+  }
+  .container.page-header .page-header-title small{
+    font-size:18pt;
+  }
+  .container.container-location .location-content{
+    padding:10px 30px;
+  }
+}
+
+@media only screen and (min-width: $tal) {
+  @for $i from 1 through 12 {
+    .tal-#{$i}{
+      width: 100%/12*$i;
+    }
+  }
+  .coll.tal-show{
+    display: block;
+  }
+  .container {
+    padding: 0% 10%; } 
+  
+  //////////////
+  // schedule //
+  //////////////
+  .schedule-box{
+    padding:25px 20px;
+  }
+
+  ////////////////
+  // navigation //
+  ////////////////
+  .header-container{
+    height: 80px;
+  }
+  nav.header{
+    height: 80px;
+  }
+  nav.header .menu-item{
+    padding:32px;
+  }
+
+  ////////////////
+  // page header//
+  ////////////////
+  .container.page-header{
+    min-height: 470px;
+  }
+  .container.page-header #countdown{
+    font-size: 75pt;  
+    padding-left:100px;
+  }
+  .container.page-header #countdown span{
+    padding-top:50px;
+    padding-bottom:40px;
+    font-size: 90pt;
+  }
+  .container.page-header .page-header-title{
+    font-size:30pt;
+  }
+  .container.page-header .page-header-title small{
+    font-size:23pt;
+  }
+  .container.container-location .location-content{
+    padding:20px 50px;
+  }
+}
+
+
+@media screen and (min-width: $de) {
+  @for $i from 1 through 12 {
+    .de-#{$i}{
+      width: 100%/12*$i;
+    }
+  }
+  .coll.de-show {
+    display: block; } }
+
+@media screen and (min-width: $xl) {
+  @for $i from 1 through 12 {
+    .xl-#{$i}{
+      width: 100%/12*$i;
+    }
+  }
+  .coll.xl-show {
+    display: block; } }

@@ -1,0 +1,11 @@
+<% provide(:title, "Edit") %>
+<h2>Hernoem je fotoalbum hier.</h2>
+<%= form_for @photoalbum do |f| %>
+
+	<div class='form-group'>
+		<%= f.text_field :name, class: 'form-control' %>
+	</div>
+	<div class='form-group'>
+		<%= f.submit 'Verstuur', class: 'btn btn-primary' %>
+	</div>
+<% end %>

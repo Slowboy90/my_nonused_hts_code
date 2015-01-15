@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta content='text/html; charset=UTF-8'
+		http-equiv='Content-Type' />
+
+	</head>
+	<body>
+		<h1>
+			welkom <%= @person.first_name %> <%= @person.last_name %>
+		</h1>
+		<p>
+			Uw unieke code om u aan te melden is: <%= @person.unique_code %>
+		</p>
+		<p>
+			Dit is de link naar de aanmeld pagina <%= @url %>
+		</p>
+		<p>
+			Hier kunt u uw klassenfoto bekijken:
+			<%= @unique_code_url %>
+		</p>
+
+	</body>
+</html>

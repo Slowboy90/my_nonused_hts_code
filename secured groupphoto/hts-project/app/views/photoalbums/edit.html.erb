@@ -1,0 +1,15 @@
+<% provide(:title, "Edit #{@photoalbum.name}") %>
+<% if admin_signed_in? %>
+	Edit <i>'<%= @photoalbum.name %>'</i> below
+
+	<%= form_for @photoalbum do |f| %>
+		<p>
+			<%= f.text_field :name %>
+		</p>
+		<p>
+			<%= f.submit 'Verstuur!' %>
+		</p>
+	<% end %>
+
+	<%= link_to "Back", photoalbums_path  %>
+<% end %>
